@@ -1,2 +1,1 @@
-# ivopajor.github.io
-Personal page
+# Personal Page
