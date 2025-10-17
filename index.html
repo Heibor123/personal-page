@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal webpage of Ivo Pajor">
     <title>Ivo Pajor - Personal Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
         * {
@@ -16,28 +19,84 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: aquamarine;
-            font-family: Arial, sans-serif;
+            background-color: #F7F3EF;
+            font-family: 'Open Sans', sans-serif;
+            color: #3B3A36;
+            line-height: 1.6;
         }
 
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+        }
+
+        /* Header Styles */
         header {
             width: 100%;
+            position: relative;
+            overflow: hidden;
+            height: 800px;
+        }
+
+        header .header-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
+            z-index: 10;
+            width: 100%;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 4rem;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: white;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .contact-icons {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .contact-icons a {
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            transition: color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .contact-icons a:hover {
+            color: #D6A759;
+            transform: scale(1.2);
         }
 
         header img {
             width: 100%;
-            max-width: 1200px;
-            height: auto;
+            height: 100%;
             display: block;
-            margin: 0 auto;
+            filter: brightness(0.7);
+            object-fit: cover;
         }
 
         /* Navigation */
         nav {
-            background-color: #333;
+            background-color: #304B5A;
             padding: 1rem;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         nav a {
@@ -47,16 +106,17 @@
             margin: 0 0.5rem;
             display: inline-block;
             transition: background-color 0.3s;
+            border-radius: 4px;
         }
 
         nav a:hover {
-            background-color: #555;
-            border-radius: 4px;
+            background-color: #D6A759;
+            color: #3B3A36;
         }
 
         /* Main Container */
         .container {
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 2rem auto;
             padding: 0 2rem;
         }
@@ -67,14 +127,14 @@
             margin-bottom: 2rem;
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(48, 75, 90, 0.1);
         }
 
         section h2 {
-            color: #667eea;
+            color: #304B5A;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid #667eea;
+            border-bottom: 2px solid #D6A759;
         }
 
         /* About Section */
@@ -83,6 +143,29 @@
             align-items: center;
             gap: 2rem;
             flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #304B5A;
+            background-color: #D6A759;
+            flex-shrink: 0;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
         .profile-image {
@@ -90,7 +173,7 @@
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #667eea;
+            border: 4px solid #304B5A;
         }
 
         /* Skills Section */
@@ -102,10 +185,71 @@
         }
 
         .skill-item {
-            background-color: #f8f9fa;
+            background-color: #304B5A;
+            color: white;
             padding: 1rem;
-            border-radius: 4px;
-            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            background-color: #D6A759;
+            color: #3B3A36;
+        }
+
+        .skill-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Research Section */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .research-item {
+            background-color: #F7F3EF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 4px solid #D6A759;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .research-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(48, 75, 90, 0.2);
+        }
+
+        .research-item h3 {
+            color: #304B5A;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-item .authors {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-item .publication {
+            font-weight: 600;
+            color: #D6A759;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-item a {
+            color: #304B5A;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .research-item a:hover {
+            color: #D6A759;
         }
 
         /* Projects Section */
@@ -115,50 +259,137 @@
             gap: 1.5rem;
             margin-top: 1rem;
         }
+        /* Experience */
+        .timeline {
+            position: relative;
+            margin-top: 1rem;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(#D6A759, #304B5A);
+            opacity: 0.3;
+        }
+        .timeline-item {
+            position: relative;
+            background: #F7F3EF;
+            border-left: 4px solid #304B5A;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 0 0 1rem 1rem;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+        }
+        .timeline-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(48,75,90,0.15);
+            border-left-color: #D6A759;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -2.25rem;       /* place marker on the timeline line */
+            top: 1.1rem;          /* vertically align with item content */
+            width: 12px;
+            height: 12px;
+            background: #F7F3EF;  /* inner fill to match card */
+            border: 3px solid #D6A759; /* stronger ring */
+            outline: 2px solid #304B5A; /* outer ring for contrast */
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #F7F3EF;
+        }
+        .job-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem 1rem;
+            margin-bottom: 0.25rem;
+        }
+        .job-title {
+            font-weight: 700;
+            color: #304B5A;
+        }
+        .job-company {
+            font-style: italic;
+            color: #3B3A36;
+        }
+        .job-dates {
+            margin-left: auto;
+            color: #6b6a66;
+            font-size: 0.95rem;
+        }
+        .job-points {
+            margin: 0.5rem 0 0 0;
+            padding-left: 1.25rem;
+        }
+        .job-points li {
+            margin: 0.25rem 0;
+        }
+        /* Awards */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .award-card {
+            background: #F7F3EF;
+            border-top: 4px solid #D6A759;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+        }
+        .award-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(48,75,90,0.15);
+            border-top-color: #304B5A;
+        }
+        .award-title {
+            color: #304B5A;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+        }
+        .award-meta {
+            color: #6b6a66;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .award-list {
+            padding-left: 1.1rem;
+            margin: 0.25rem 0 0 0;
+        }
 
         .project-card {
-            background-color: #f8f9fa;
+            background-color: #F7F3EF;
             padding: 1.5rem;
             border-radius: 8px;
+            border-left: 4px solid #304B5A;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        .project-card a:hover {
+            color: #D6A759;
         }
 
-        .project-card h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
 
-        /* Contact Section */
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
 
         .contact-item a {
-            color: #667eea;
+            color: #304B5A;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .contact-item a:hover {
-            color: #764ba2;
+            color: #D6A759;
         }
 
         /* Footer */
         footer {
-            background-color: #333;
+            background-color: #304B5A;
             color: white;
             text-align: center;
             padding: 1.5rem;
@@ -186,16 +417,34 @@
 <body>
 <!-- Header Section -->
 <header>
+    <div class="header-title">
+        <h1>Ivo Pajor</h1>
+        <p>Developer | Data Scientist</p>
+    </div>
+    <div class="contact-icons">
+        <a href="mailto:pajorivo@gmail.com" title="Email">✉️</a>
+        <a href="https://github.com/Heibor123" target="_blank" title="GitHub">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="white" style="filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ivo-pajor/" target="_blank" title="LinkedIn">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="white" style="filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+        </a>
+    </div>
     <img src="header.jpg" alt="Header Image">
-    <h1>Ivo Pajor</h1>
-    <p>Developer | Data Scientist</p>
 </header>
 
 <!-- Navigation -->
 <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#awards">Awards</a>
     <a href="#contact">Contact</a>
 </nav>
 
@@ -205,15 +454,15 @@
     <section id="about">
         <h2>About Me</h2>
         <div class="about-content">
-            <!-- Add your profile image here -->
-            <!-- <img src="your-image.jpg" alt="Profile Picture" class="profile-image"> -->
-            <div>
+            <img src="photo.jpg" alt="Ivo Pajor" class="profile-image">
+            <div class="about-text">
                 <p>
-                    Welcome to my personal page! I'm a passionate developer with experience in...
-                    Replace this text with your own introduction.
+                    Buenas!
                 </p>
                 <p>
-                    Add more paragraphs about yourself, your background, interests, and what you do.
+                    I'm Ivo, a developer and data scientist that likes to tackle complex problems.
+                    I am a graduated student at the University of Buenos Aires with a Bachelor/Master's degree in Computer Science.
+                    The topics I'm interested include: reinforcement learning, operational research, spectral analysis, number theory, and many other things to!
                 </p>
             </div>
         </div>
@@ -224,21 +473,127 @@
         <h2>Skills</h2>
         <div class="skills-grid">
             <div class="skill-item">
-                <h3>Programming</h3>
-                <p>JavaScript, Python, Java, C++</p>
+                <h3>Programming Languages</h3>
+                <p>C++, Python, JavaScript, Java</p>
             </div>
             <div class="skill-item">
-                <h3>Web Development</h3>
-                <p>HTML, CSS, React, Node.js</p>
+                <h3>Databases</h3>
+                <p>PostgreSQL</p>
+            </div>
+            <div class="skill-item">
+                <h3>Standards</h3>
+                <p>WebSocket, OAuth</p>
             </div>
             <div class="skill-item">
                 <h3>Tools</h3>
-                <p>Git, Docker, VS Code</p>
+                <p>Git, Docker, Alembic, SQLAlchemy, GraphQL, Gurobi, Pyomo</p>
             </div>
-            <div class="skill-item">
-                <h3>Other Skills</h3>
-                <p>Add your other skills here</p>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <h2>Research</h2>
+        <div class="research-grid">
+            <div class="research-item">
+                <h3>On extremal factors of de Bruijn-like graphs</h3>
+                <p class="authors">Álvarez, Nicolás; Becher, Verónica; Mereb, Martín; <b>  Pajor, Ivo</b>; Soto, Carlos Miguel</p>
+                <p class="publication">Discrete Applied Mathematics, 357, 352–364</p>
+                <a href="https://doi.org/10.1016/j.dam.2024.06.010">View Paper → </a>
             </div>
+            <div class="research-item">
+                <h3>De Bruijn sequences with minimum discrepancy</h3>
+                <p class="authors">Álvarez, Nicolás; Becher, Verónica; Mereb, Martín; <b>  Pajor, Ivo</b>; Soto, Carlos Miguel</p>
+                <p class="publication">Submitted, 2024</p>
+                <a href="https://arxiv.org/abs/2407.17367">View Paper →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Work Experience</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="job-header">
+                    <span class="job-title">Data Science Developer</span>
+                    <span class="job-company">— <i>Mercado Libre</i></span>
+                    <span class="job-dates">Oct 2024 – present</span>
+                </div>
+                <ul class="job-points">
+                    <li>Develop and evaluate metaheuristics for a modified VRP.</li>
+                    <li>Build tooling for hyperparameter tuning and rigorous comparisons.</li>
+                    <li>Improve delivery efficiency and reduce costs.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="job-header">
+                    <span class="job-title">Full Stack Developer</span>
+                    <span class="job-company">— <i>Stealth startup</i></span>
+                    <span class="job-dates">Aug 2023 – Feb 2024</span>
+                </div>
+                <ul class="job-points">
+                    <li>Delivered end‑to‑end features across backend and frontend.</li>
+                    <li>Managed migrations and services with modern tooling.</li>
+                    <li>Worked with Python, JavaScript, and PostgreSQL.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="job-header">
+                    <span class="job-title">Assistant Professor</span>
+                    <span class="job-company">— <i>Torcuato Di Tella University</i></span>
+                    <span class="job-dates">Mar 2023 – present</span>
+                </div>
+                <ul class="job-points">
+                    <li>Taught Graph Algorithms, Intro to Programming, and Operations Research.</li>
+                    <li>Created course materials; founded a competitive programming club.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="job-header">
+                    <span class="job-title">Data Scientist Intern</span>
+                    <span class="job-company">— <i>Accenture</i></span>
+                    <span class="job-dates">Mar 2022 – Mar 2023</span>
+                </div>
+                <ul class="job-points">
+                    <li>Built and optimized Pyomo/Gurobi models for oil and gas.</li>
+                    <li>Reduced model complexity and runtime; completed <a href="https://www.coursera.org/account/accomplishments/verify/W2R5GQUZ2SYC">optimization certification.</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards">
+        <h2>Awards</h2>
+        <div class="awards-grid">
+            <div class="award-card">
+                <div class="award-title"> International Collegiate Programming Contest (ICPC)</div>
+                <div class="award-meta">
+                    <a href="https://icpc.global" target="_blank" rel="noopener">icpc.global</a>
+                </div>
+                <ul class="award-list">
+                    <li>🥉 <strong>Bronze Medallist</strong> — 2023</li>
+                    <li><strong>World Finalist</strong> — 22nd (2020), 13th (2023), 17th (2024)</li>
+                    <li>🏆 <strong>Latin American Regional Champions</strong> — 2022, 2023</li>
+                    <li><strong>World Finals Coach</strong> — 2025</li>
+                </ul>
+            </div>
+            <div class="award-card">
+                <div class="award-title"> Argentine Interuniversity Mathematics Competition</div>
+                <div class="award-meta">Fourth Place</div>
+                <div class="award-meta">Universidad de Buenos Aires · September 2022</div>
+            </div>
+            <div class="award-card">
+                <div class="award-title">National Mathematics Olympiads</div>
+                <div class="award-meta">Honourable Mention</div>
+                <div class="award-meta">2015, 2016, 2017</div>
+            </div>
+
+
         </div>
     </section>
 
@@ -247,46 +602,18 @@
         <h2>Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <h3>Project 1</h3>
-                <p>Brief description of your project and what technologies you used.</p>
-                <a href="#">View Project →</a>
-            </div>
-            <div class="project-card">
-                <h3>Project 2</h3>
-                <p>Brief description of your project and what technologies you used.</p>
-                <a href="#">View Project →</a>
-            </div>
-            <div class="project-card">
-                <h3>Project 3</h3>
-                <p>Brief description of your project and what technologies you used.</p>
-                <a href="#">View Project →</a>
+                <h3>Residential Load Scheduling</h3>
+                <p>Algorithms and heuristics for scheduling residential power loads under constraints.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <div class="contact-info">
-            <div class="contact-item">
-                <strong>Email:</strong>
-                <a href="mailto:pajorivo@gmail.com">pajorivo@gmail.com</a>
-            </div>
-            <div class="contact-item">
-                <strong>GitHub:</strong>
-                <a href="https://github.com/Heibor123" target="_blank">github.com/Heibor123</a>
-            </div>
-            <div class="contact-item">
-                <strong>LinkedIn:</strong>
-                <a href="https://www.linkedin.com/in/ivo-pajor/" target="_blank">linkedin.com/in/ivo-pajor</a>
-            </div>
-        </div>
-    </section>
+
 </div>
 
 <!-- Footer -->
 <footer>
-    <p>&copy; 2025 Your Name. All rights reserved.</p>
+    <p>&copy; 2025 Ivo Pajor. All rights reserved.</p>
 </footer>
 </body>
 </html>
