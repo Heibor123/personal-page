@@ -412,6 +412,160 @@
                 text-align: center;
             }
         }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                height: 400px;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.2rem;
+            }
+
+            .contact-icons {
+                bottom: 10px;
+                gap: 0.75rem;
+            }
+
+            .contact-icons a {
+                font-size: 1.5rem;
+            }
+
+            .contact-icons svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            nav {
+                padding: 0.5rem;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 0.25rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+                margin: 1rem auto;
+            }
+
+            section {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-text {
+                min-width: unset;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 1rem;
+            }
+
+            .timeline::before {
+                left: 8px;
+            }
+
+            .timeline-item {
+                margin-left: 0.5rem;
+                padding: 1rem;
+            }
+
+            .timeline-item::before {
+                left: -1.5rem;
+                width: 10px;
+                height: 10px;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .job-dates {
+                margin-left: 0;
+                font-size: 0.9rem;
+            }
+
+            .job-points {
+                padding-left: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .award-card {
+                padding: 1rem;
+            }
+
+            .award-title {
+                font-size: 1rem;
+            }
+
+            .award-meta {
+                font-size: 0.9rem;
+            }
+
+            .award-list {
+                font-size: 0.95rem;
+                padding-left: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .skill-item h3,
+            .research-item h3,
+            .project-card h3 {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
